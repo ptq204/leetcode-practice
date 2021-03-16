@@ -35,3 +35,6 @@ func mergeKLists(lists []*ListNode) *ListNode {
     }
     return ans
 }
+
+// Time complexity: O(K*N) where K is number of linked lists, N is the length of merged list
+// Space complexity: O(1)
