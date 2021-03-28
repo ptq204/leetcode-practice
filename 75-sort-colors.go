@@ -17,3 +17,6 @@ func sortColors(nums []int)  {
         }
     }
 }
+
+// Time complexity: O(N)
+// Space complexity: O(1)
