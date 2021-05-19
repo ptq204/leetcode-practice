@@ -11,29 +11,17 @@ func max(i,j int) int {
 
 func maxSubArray(nums []int) int {
     n := len(nums)
-    prefixSum := make([]int, 0)
-    sum := 0
-    ans := math.MinInt64
-    for i:=0; i<n; i++ {
-        if ans < nums[i] {
-            ans = nums[i]
-        }
-        sum += nums[i]
-        prefixSum = append(prefixSum, sum)
-    }
-    i := -1
+    i := 0
     j := 0
-    for j < n && i < j {
-        if i == -1 {
-            sum = prefixSum[j]
-        }  else {
-            sum = prefixSum[j] - prefixSum[i]
-        }
+    ans := math.MinInt64
+    sum := 0
+    for j < n {
+        sum += nums[j]
         if sum < nums[j] {
-            for sum < nums[j] && i < j {
-                i++
-                sum = prefixSum[j] - prefixSum[i]
+            for i < j && sum < nums[j] {
+                sum -= nums[i]
                 ans = max(ans, sum)
+                i++
             }
         } else {
             ans = max(ans, sum)
@@ -44,4 +32,4 @@ func maxSubArray(nums []int) int {
 }
 
 // Time complexity: O(N)
-// Space complexity: O(N)
+// Space complexity: O(1)
